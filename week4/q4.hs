@@ -13,10 +13,15 @@ Examples:
 
 
 -- dropWhile - it will drop the elements that are equal to x and then the rest is added to xs and recurssion 
+f4 :: [Int] -> [Int]
+f4 [] = [] 
+f4 (x:xs) = x : f4 (dropWhile (== x) xs)
+
+
+-- shortcut
 import Data.List(nub)
 f4 :: [Int] -> [Int]
 f4 [] = [] 
--- f4 (x:xs) = x : f4 (dropWhile (== x) xs)
 f4 s = nub s
 
 
