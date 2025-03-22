@@ -1,0 +1,95 @@
+1. Write a function to find the square of a number.
+Solution:
+square :: Int -> Int
+square x = x * x
+
+main :: IO ()
+main = print (square 5)  -- Output: 25
+
+
+2. Write a function to check if a number is even:
+Solution:
+isEven :: Int -> Bool
+isEven n = n `mod` 2 == 0
+
+main :: IO ()
+main = print (isEven 4)  -- Output: True
+
+
+3. Write a function to compute the sum of two numbers.
+Solution:
+sumTwo :: Int -> Int -> Int
+sumTwo a b = a + b
+
+main :: IO ()
+main = print (sumTwo 3 7)  -- Output: 10
+
+
+4. Write a function to calculate the factorial of a number.
+Solution:
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+main :: IO ()
+main = print (factorial 5)  -- Output: 120
+
+
+5. Write a function to reverse a list.
+Solution:
+reverseList :: [a] -> [a]
+reverseList [] = []
+reverseList (x:xs) = reverseList xs ++ [x]
+
+main :: IO ()
+main = print (reverseList [1, 2, 3, 4])  -- Output: [4,3,2,1]
+
+
+6. Write a function to find the maximum of two numbers.
+Solution:
+maxTwo :: Int -> Int -> Int
+maxTwo a b = if a > b then a else b
+
+main :: IO ()
+main = print (maxTwo 7 3)  -- Output: 7
+
+
+7. Write a function to check if a list is empty.
+Solution:
+isEmpty :: [a] -> Bool
+isEmpty [] = True
+isEmpty _  = False
+
+main :: IO ()
+main = print (isEmpty [])      -- Output: True
+
+
+8. Write a function to get the first element of a list.
+Solution:
+firstElement :: [a] -> Maybe a
+firstElement [] = Nothing
+firstElement (x:_) = Just x
+
+main :: IO ()
+main = print (firstElement [10, 20, 30])  -- Output: Just 10
+
+
+9. Write a function to calculate the length of a list.
+Solution:
+listLength :: [a] -> Int
+listLength [] = 0
+listLength (_:xs) = 1 + listLength xs
+
+main :: IO ()
+main = print (listLength [1,2,3,4,5])  -- Output: 5
+
+
+10. Write a function to check if a character is a vowel.
+Solution:
+isVowel :: Char -> Bool
+isVowel c = c `elem` "aeiouAEIOU"
+
+main :: IO ()
+main = print (isVowel 'a')  -- Output: True
+
+
