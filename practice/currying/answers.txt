@@ -1,0 +1,147 @@
+1. Add Two Numbers
+Without Currying:
+add :: Int -> Int -> Int
+add x y = x + y
+
+main :: IO ()
+main = print (add 3 4)  -- Output: 7
+
+With Currying:
+addCurried :: Int -> (Int -> Int)
+addCurried x = \y -> x + y  -- Equivalent to: addCurried x y = x + y
+
+main :: IO ()
+main = do
+    let add5 = addCurried 5
+    print (add5 3)  -- Output: 8
+✅ In the curried version, addCurried 5 returns a function that adds 5 to any number.
+
+
+2. Multiply Two Numbers
+Without Currying:
+multiply :: Int -> Int -> Int
+multiply x y = x * y
+
+main :: IO ()
+main = print (multiply 3 5)  -- Output: 15
+
+With Currying:
+multiplyCurried :: Int -> (Int -> Int)
+multiplyCurried x = \y -> x * y
+
+main :: IO ()
+main = do
+    let times3 = multiplyCurried 3
+    print (times3 5)  -- Output: 15
+✅ Here, times3 becomes a function that multiplies any number by 3.
+
+
+3. Check if a Number is Greater than Another
+Without Currying:
+isGreater :: Int -> Int -> Bool
+isGreater x y = x > y
+
+main :: IO ()
+main = print (isGreater 10 5)  -- Output: True
+
+With Currying:
+isGreaterCurried :: Int -> (Int -> Bool)
+isGreaterCurried x = \y -> x > y
+
+main :: IO ()
+main = do
+    let greaterThan10 = isGreaterCurried 10
+    print (greaterThan10 5)  -- Output: True
+✅ Now, greaterThan10 is a function that checks if a number is greater than 10.
+
+
+4. Check if a Number is Even
+Without Currying:
+isEven :: Int -> Bool
+isEven x = x `mod` 2 == 0
+
+main :: IO ()
+main = print (isEven 4)  -- Output: True
+
+With Currying (not much different since it's a single argument function):
+isEvenCurried :: Int -> Bool
+isEvenCurried = \x -> x `mod` 2 == 0
+
+main :: IO ()
+main = print (isEvenCurried 4)  -- Output: True
+✅ Since isEven only takes one argument, its curried form remains similar.
+
+
+5. Concatenate Two Strings
+Without Currying:
+concatStrings :: String -> String -> String
+concatStrings s1 s2 = s1 ++ " " ++ s2
+
+main :: IO ()
+main = print (concatStrings "Hello" "Haskell")  -- Output: "Hello Haskell"
+
+With Currying:
+concatCurried :: String -> (String -> String)
+concatCurried s1 = \s2 -> s1 ++ " " ++ s2
+
+main :: IO ()
+main = do
+    let greet = concatCurried "Hello"
+    print (greet "Haskell")  -- Output: "Hello Haskell"
+✅ Now greet is a function that takes a string and appends it to "Hello".
+
+
+6. Compute Power (x^y)
+Without Currying:
+power :: Int -> Int -> Int
+power x y = x ^ y
+
+main :: IO ()
+main = print (power 2 3)  -- Output: 8
+
+With Currying:
+powerCurried :: Int -> (Int -> Int)
+powerCurried x = \y -> x ^ y
+
+main :: IO ()
+main = do
+    let square = powerCurried 2
+    print (square 3)  -- Output: 8
+✅ Now, square is a function that raises 2 to any given power.
+
+
+7. Find the First Element of a List
+Without Currying:
+firstElement :: [a] -> a
+firstElement (x:_) = x
+firstElement [] = error "Empty list"
+
+main :: IO ()
+main = print (firstElement [1,2,3])  -- Output: 1
+
+With Currying (unchanged since it's single-argument):
+firstElementCurried :: [a] -> a
+firstElementCurried = \(x:_) -> x
+
+main :: IO ()
+main = print (firstElementCurried [1,2,3])  -- Output: 1
+
+
+8. Apply a Discount to a Price
+Without Currying:
+applyDiscount :: Double -> Double -> Double
+applyDiscount discount price = price - (price * discount / 100)
+
+main :: IO ()
+main = print (applyDiscount 10 200)  -- Output: 180.0
+
+With Currying:
+applyDiscountCurried :: Double -> (Double -> Double)
+applyDiscountCurried discount = \price -> price - (price * discount / 100)
+
+main :: IO ()
+main = do
+    let tenPercentOff = applyDiscountCurried 10
+    print (tenPercentOff 200)  -- Output: 180.0
+✅ Now, tenPercentOff is a function that applies a 10% discount to any price.
+
